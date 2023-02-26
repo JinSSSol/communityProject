@@ -22,14 +22,14 @@
           return false;
         }
 
-        $("p[name='adminAuthStatus']").val('success');
+        $("input[name='adminAuthStatus']").val('success');
         alert('관리자 인증에 성공하였습니다.')
       });
 
       $('#submitForm').on('submit', function () {
         var $thisForm = $(this);
 
-        var adminAuthStatus = $thisForm.find('p[name=adminAuthStatus').val();
+        var adminAuthStatus = $thisForm.find('input[name=adminAuthStatus').val();
         if (adminAuthStatus !== 'success') {
           alert('관리자 인증이 필요합니다.');
           return false;
@@ -45,7 +45,7 @@
 </head>
 <body>
 
-<h1>회원 가입</h1>
+<h1>관리자 회원 가입</h1>
 
 
 <form id="submitForm" method="post">
@@ -71,7 +71,7 @@
   <div class="adminAuth">
     <input type="password" name="adminCodeInput" placeholder="관리자 코드 입력" required/>
     <button type="button" value="false">관리자 인증</button>
-    <p name="adminAuthStatus"></p>
+    <input type="hidden" name="adminAuthStatus"/>
 
   </div>
 

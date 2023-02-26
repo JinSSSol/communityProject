@@ -1,9 +1,11 @@
 package com.zerobase.community.configuration;
 
+import com.zerobase.community.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -17,6 +19,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+	private final UserService userService;
 	@Bean
 	PasswordEncoder getPasswordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -45,8 +48,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				"/"
 				, "/user/register"
 				, "/user/register_admin"
-				, "/user/find_password"
-				, "/post/search"
+				//, "/user/find_password"
+				//  "/post/search"
 			)
 			.permitAll();
 
@@ -56,11 +59,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.formLogin()
 			.loginPage("/user/login")
+			.usernameParameter("userEmail")
 			.failureHandler(getFailureHandler())
 			.permitAll();
 
 		http.logout()
-			.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
+			.logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
 			.logoutSuccessUrl("/")
 			.invalidateHttpSession(true);
 
@@ -70,5 +74,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		super.configure(http);
 	}
 
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userService)
+			.passwordEncoder(getPasswordEncoder());
+
+		super.configure(auth);
+	}
 
 }

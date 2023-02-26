@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserController {
 
+	private final UserService userService;
 	@Value("${adminCode}")
 	private String adminCode;
 
@@ -25,7 +26,12 @@ public class UserController {
 		return "index";
 	}
 
-	private final UserService userService;
+	@RequestMapping("/error/denied")
+	public String errorDenied() {
+
+		return "error/denied";
+	}
+
 	@RequestMapping("/user/login")
 	public String login() {
 
@@ -55,8 +61,6 @@ public class UserController {
 
 		return "user/register_complete";
 	}
-
-
 
 
 }
