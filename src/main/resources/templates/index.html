@@ -6,17 +6,12 @@
 </head>
 <body>
   <h1>메인 페이지</h1>
-  <div>
-    <a href="/user/register">회원가입</a>
-    |
-    <a href="/user/register_admin">관리자 회원가입</a>
-    |
-    <a href="/user/login">로그인</a>
-    |
-    <a href="/user/logout">로그아웃</a>
-  </div>
+  <div th:replace="/fragments/layout.html :: fragment-body-menu"></div>
   <hr/>
 
-
+  <a href="post/list">게시글 목록</a>
+  <br>
+  <a href="post/add">게시글 작성</a>
+  <br>
 </body>
 </html>

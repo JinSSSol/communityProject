@@ -49,7 +49,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				, "/user/register"
 				, "/user/register_admin"
 				//, "/user/find_password"
-				//  "/post/search"
+				, "/post/list"
+				, "/post/detail"
 			)
 			.permitAll();
 
