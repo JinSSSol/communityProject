@@ -8,9 +8,9 @@ import java.util.List;
 public interface PostService {
 
 	/**
-	 * 강좌 등록
+	 * 게시글 등록
 	 */
-	boolean add(PostInput parameter);
+	Long add(PostInput parameter);
 
 	/**
 	 * 게시글 목록 리턴

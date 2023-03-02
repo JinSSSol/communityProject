@@ -1,6 +1,5 @@
-package com.zerobase.community.post.entity;
+package com.zerobase.community.file.entity;
 
-import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,16 +16,15 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-public class Post {
+public class File {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long postId;
-	private String title;
-	private String contents;
-	private Long userId;
+	private Long fileId;
+	private String originName;
+	private String savedName;
+	private String savedPath;
 
-	private String userName;
-	private LocalDate createAt;
+	private Long postId;
 
 }

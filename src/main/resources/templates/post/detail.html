@@ -83,6 +83,19 @@
             <span th:text="${detail.createAt}">작성일자</span>
           </td>
         </tr>
+
+        <tr>
+          <td>
+            <p>이미지</p>
+          </td>
+          <td>
+            <div th:each="imageFile : ${files}">
+              <img th:src="|/images/${imageFile.fileId}|" width="150" height="150">
+              <p th:text="${imageFile.originName}">이미지</p>
+            </div>
+          </td>
+        </tr>
+
       </tbody>
     </table>
 

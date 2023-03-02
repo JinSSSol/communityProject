@@ -23,7 +23,7 @@ public class PostServiceImpl implements PostService {
 	private final PostMapper postMapper;
 
 	@Override
-	public boolean add(PostInput parameter) {
+	public Long add(PostInput parameter) {
 		Post post = Post.builder()
 			.postId(parameter.getPostId())
 			.title(parameter.getTitle())
@@ -33,7 +33,7 @@ public class PostServiceImpl implements PostService {
 			.createAt(LocalDate.now())
 			.build();
 		postRepository.save(post);
-		return true;
+		return post.getPostId();
 	}
 
 	@Override

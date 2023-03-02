@@ -47,67 +47,67 @@
   </script>
 </head>
 <body>
-  <div th:replace="/fragments/layout.html :: fragment-body-menu"></div>
-  <h1>게시글 작성</h1>
+<div th:replace="/fragments/layout.html :: fragment-body-menu"></div>
+<h1>게시글 작성</h1>
 
-  <div class="detail">
+<div class="detail">
 
-    <form id="submitForm" method="post" enctype="multipart/form-data">
+  <form id="submitForm" method="post" enctype="multipart/form-data">
 
-      <table>
-        <tbody>
-        <tr>
-          <th>
-            제목
-          </th>
-          <td>
-            <input type="text" name="title" required placeholder="제목 입력"/>
-          </td>
-        </tr>
+    <table>
+      <tbody>
+      <tr>
+        <th>
+          제목
+        </th>
+        <td>
+          <input type="text" name="title" required placeholder="제목 입력"/>
+        </td>
+      </tr>
 
-        <tr>
-          <th>
-            내용
-          </th>
-          <td>
-            <textarea id="contents" name="contents" placeholder="내용 입력"></textarea>
-          </td>
-        </tr>
-        <tr>
-          <th>첨부 파일</th>
-          <td>
-            <input type="file" name="file"/>
-          </td>
-        </tr>
+      <tr>
+        <th>
+          내용
+        </th>
+        <td>
+          <textarea id="contents" name="contents" placeholder="내용 입력"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <th>첨부 파일</th>
+        <td>
+          <input type="file" multiple="multiple" name="files"/>
+        </td>
+      </tr>
 
-        </tbody>
-      </table>
+      </tbody>
+    </table>
 
-      <div class="buttons">
-        <button type="submit"> 게시물 등록</button>
-        <a href="/post/list"> 목록 이동 </a>
-      </div>
+    <div class="buttons">
+      <button type="submit"> 게시물 등록</button>
+      <a href="/post/list"> 목록 이동 </a>
+    </div>
 
-    </form>
-  </div>
+  </form>
+</div>
 
 
-  <script type="text/javascript" src="/res/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
-  <script type="text/javascript">
+<script type="text/javascript" src="/res/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript">
 
-    var oEditors = [];
+  var oEditors = [];
 
-    setTimeout(function () {
+  setTimeout(function () {
 
-      nhn.husky.EZCreator.createInIFrame({
-        oAppRef: oEditors,
-        elPlaceHolder: "contents",
-        sSkinURI: "/res/se2/SmartEditor2Skin.html",
-        fCreator: "createSEditor2"
-      });
+    nhn.husky.EZCreator.createInIFrame({
+      oAppRef: oEditors,
+      elPlaceHolder: "contents",
+      sSkinURI: "/res/se2/SmartEditor2Skin.html",
+      fCreator: "createSEditor2"
+    });
 
-    }, 100);
+  }, 100);
 
-  </script>
+</script>
 </body>
 </html>
